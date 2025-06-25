@@ -1,0 +1,414 @@
+/*============================== BASE-STYLES ===============================*/
+
+@import 
+url('http://fonts.googleapis.com/css2?family=Inter:wgt@400;600&display=swap');
+
+body {
+    position: relative;
+    margin:0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(10, 25, 47);
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+:root {
+    --navy: rgb(15, 41, 55);
+    --dark-navy: rgb(10, 25, 47);
+    --emerland: #10b981;
+}
+
+
+/*============================== LOGIN-PAGE ===============================*/
+
+.login-form-container {
+    max-width: 401px;
+    margin: auto;
+    padding: 31px;
+    background-color: #ffffffea;
+    box-shadow: 0 4px 12px rgba(1, 1, 1, 0.1);
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form-container h2 {
+    margin-bottom: 21px;
+    font-size: 24px;
+    color: var(--dark-navy);
+}
+.login-input {
+    width: 100%;
+    color: #1b1b33;
+    padding: 11px;
+    margin: 7px 0;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 7px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+.login-input:focus {
+    outline: none;
+    border-color: var(--emerland);
+    box-shadow: 0 0 4px rgba(12, 166, 120, 0.5);
+
+}
+.login-btn {
+    width: 100%;
+    padding: 11px;
+    background-color: var(--emerland);
+    border: none;
+    border-radius: 7px;
+    margin-top: 11px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    color: #191931;
+}
+.login-btn:hover {
+    background-color: rgb(10, 112, 81);
+}
+.login-form-container p {
+    color: #181831;
+}
+
+
+/*============================== REGISTER-PAGE ===============================*/
+
+.register-form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffffea;
+    box-shadow: 0 4px 12px rgba(1, 1, 1, 0.1);
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-form-container h2 {
+    margin-bottom: 21px;
+    font-size: 24px;
+    color: #1a1a2e;
+}
+.register-input {
+    width: 100%;
+    color: #1b1b33;
+    padding: 11px;
+    margin: 7px 0;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 7px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+.register-input:focus {
+    outline: none;
+    border-color: var(--emerland);
+    box-shadow: 0 0 4px rgba(12, 166, 120, 0.5);
+}
+.register-btn {
+    width: 100%;
+    padding: 11px;
+    background-color: var(--emerland);
+    border: none;
+    border-radius: 7px;
+    margin-top: 11px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    color: #191931;
+}
+.register-btn:hover {
+    background-color: rgb(10, 112, 81);
+}
+.register-form-container p {
+    color: #181831;
+}
+
+
+/*============================== DASHBOARD-PAGE ===============================*/
+
+.dashboard-form-container {
+    font-family: 'Inter', sans-serif;
+    max-width: 601px;
+    margin: 32px auto;
+    padding: 60px 24px 24px 24px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+.dashboard-form-container h1 {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 16px;
+    text-align: center;
+    margin-top: 0;
+}
+.dashboard-form-container h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    color:  #0f172a;
+}
+.dashboard-form-container h3 {
+    font-size: 18px;
+    margin-top: 21px;
+    margin-bottom: 11px;
+    color: #181831;
+    text-align: center;
+}
+.dashboard-form-grp {
+    margin-bottom: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.dashboard-btn {
+    width: 301px;
+    padding: 11px;
+    font-size: 16px;
+    background-color: var(--emerland);
+    border: 1px solid rgb(31, 107, 69);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dashboard-btn:hover {
+    background-color: #0d8964;
+}
+.dashboard-input {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 11px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+.dashboard-input:focus {
+    border-color: #059669;
+    box-shadow: 0 0 4px rgba(12, 166, 120, 0.5);
+}
+.dashboard-form-container p {
+    color: #181831;
+}
+.dashboard-team-section {
+    margin-top: 24px;
+}
+.team-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+.team-list li {
+    padding: 11px 16px;
+    margin-bottom: 11px;
+    background-color: #f1f5f9;
+    border-radius: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+.btn-small-safe {
+    margin-left: 7px;
+    padding: 6px 11px;
+    background-color: #128a97;
+    font-size: 14px;
+    color: white;
+    border-radius: 7px;
+    border: 1px solid rgb(19, 100, 100);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.btn-small-safe:hover {
+    background-color: #125f68e1;
+}
+.btn-small-danger {
+    margin-left: 7px;
+    padding: 6px 11px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 14px;
+    border: 1px solid rgb(138, 22, 22);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-radius: 7px;
+}
+.btn-small-danger:hover {
+    background-color: #dc2626;
+}
+
+
+/*============================== TEAMBOARD-PAGE ===============================*/
+
+.teamboard-container {
+    min-height: 100vh;
+    max-width: 801px;
+    margin: 32px auto;
+    padding: 60px 24px 24px 24px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+}
+.input-btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 16px 0;
+}
+.teamboard-input {
+    padding: 9px 15px;
+    border: 1px solid #ccc;
+    width: 61%;
+    margin-right: 7px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 26px;
+    margin-top: 26px;
+}
+.teamboard-input:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 4px rgba(12, 166, 120, 0.5);
+}
+.add-btn {
+    background-color: var(--emerland);
+    color: white;
+    padding: 9px 15px;
+    border-radius: 5px;
+    border: 1px solid rgb(18, 114, 85);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.add-btn:hover {
+    background-color: #0b8f65;
+}
+.teamboard-container h1 {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 26px;
+}
+.badge {
+    background-color: #1c2238;
+    display: inline-block;
+    color:  white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.switch-team-btn {
+    margin-left: 16px;
+    padding: 9px 15px;
+    background-color: #128a97;
+    color: white;
+    font-weight: 600;
+    border: 1px solid rgb(19, 100, 100);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.switch-team-btn:hover {
+    background-color: #125f68e1;
+}
+.board-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+    background-color: #e6eef5;
+    padding: 16px;
+    border-radius: 11px;
+}
+.task-column {
+    flex: 1;
+    background-color: #f0f4f8;
+    padding: 16px;
+    border-radius: 11px;
+    border: 1px dashed #bbb;
+    transition: background-color 0.3s;
+    min-height: 200px;
+}
+.task-card {
+    background-color: white;
+    border-radius: 7px;
+    padding: 11px;
+    margin: 8px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.011);
+    font-size: 14px;
+    font-weight: 500;
+}
+.teamboard-container p {
+    text-align: center;
+    font-weight: bold;
+    color: #64748b;
+    margin-top: 32px;
+}
+
+
+hr {
+    border: none;
+    height: 1px;
+    border-top: 1px solid #eeecec;
+    margin: 16px 0;
+}
+
+
+/*============================== LOGOUT ===============================*/
+
+.top-bar {
+    position: absolute;
+    top: 16px;
+    right: 21px;
+    z-index: 1000;
+}
+.logout-btn {
+
+    background-color: transparent;
+    color: white;
+    border: 1px solid #727272;
+    padding: 5px 11px;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+.logout-btn:hover {
+    background-color: #b11a29;
+}
+
+
+/*============================== RESPONSIVE ===============================*/
+
+@media (max-width: 768px) {
+    .board-columns {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .dashboard-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .dashboard-btn, .dashboard-input {
+        width: 100%;
+    }
+    .top-bar {
+        top: 32px;
+        right: 12px;
+    }
+}
