@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // Socket.IO support
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io(`${import.meta.env.VITE_API_URL}`);
 
 const TeamBoard = () => {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const TeamBoard = () => {
       try {
         if (!team || !team._id) return;
         const res = await axios.get(
-          `http://localhost:5000/api/tasks/team/${team._id}`,
+          `${import.meta.env.VITE_API_URL}/api/tasks/team/${team._id}`,
           {
             headers: { Authorization: `Bearer ${token}`
           },
@@ -61,7 +61,7 @@ const TeamBoard = () => {
   if (!newTask.trim()) return; // Ignore empty input
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/tasks/create",
+      `${import.meta.env.VITE_API_URL}/api/tasks/create`,
       {
         title: newTask,
         teamId: team._id,
@@ -86,7 +86,7 @@ const TeamBoard = () => {
   const handleStatusChange = async ({taskId, newStatus}) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${taskId}/status`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}`
       }
@@ -118,7 +118,7 @@ const TeamBoard = () => {
     // Update task status on the server
     const token = localStorage.getItem('token');
     const res = await axios.put(
-      `http://localhost:5000/api/tasks/${taskId}/status`,
+      `${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/status`,
       { status: newStatus },
       { headers: { Authorization: `Bearer ${token}`
     }
@@ -145,7 +145,8 @@ const TeamBoard = () => {
 // Handle Deleting task
 const handleDeleteTask = async (taskId) => {
   try {
-    await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`,
+      {
       headers: { Authorization: `Bearer ${token}`
     },
   });
@@ -173,7 +174,7 @@ const handleLogout = () => {
  useEffect(() => {
   if (!team || !team._id) return;
 
-  const socket = io("http://localhost:5000");
+  const socket = io(`${import.meta.env.VITE_API_URL}`);
 
   socket.on("taskCreated", (task) => {
     if (task.teamId === team._id) {

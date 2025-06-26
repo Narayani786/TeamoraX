@@ -23,7 +23,7 @@ const Register = () => {
       return;
     }
     try {
-      const res = await axios.post( 'http://localhost:5000/api/auth/register', formData );
+      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/team/register`, formData );
 
       const data = res.data;
 

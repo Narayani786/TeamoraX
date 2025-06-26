@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = import.meta.env.VITE_API_URL;
 
   // AUTHS
 export const loginUser = async (email, password) => {
@@ -53,7 +53,7 @@ export const joinTeam = async (teamCode) => {
     const token = localStorage.getItem("token");
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/team/join",
+      `${import.meta.env.VITE_API_URL}/api/team/join`,
       { code: teamCode },
       {
         headers: {

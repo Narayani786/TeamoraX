@@ -18,7 +18,7 @@ const Dashboard = () => {
         return;
       }
       try {
-        const res = await axios.get('http://localhost:5000/api/team/joined', {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/team/joined`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -45,7 +45,7 @@ const Dashboard = () => {
   
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/team/create",
+      `${import.meta.env.VITE_API_URL}/api/team/create`,
       { name: teamName },
       { headers: { Authorization: `Bearer ${token}`
     },
@@ -68,7 +68,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/team/join',
+        `${import.meta.env.VITE_API_URL}/api/team/join`,
         { code: joinCode },
         {
           headers: {
@@ -103,7 +103,7 @@ const handleLeaveTeam = async (teamToLeave) => {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/team/leave",
+      `${import.meta.env.VITE_API_URL}/api/team/leave`,
       { teamId: teamToLeave._id },
       {
         headers: {
