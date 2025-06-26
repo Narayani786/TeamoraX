@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET || '82aae8b77cf96d3c439b8c95d4f9cd7bc7
 
 export const registerUser = async (req, res) => {
   try {
-    console.log('Backend received:', req.body)
+    console.log('Backend received:', req.body);
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {

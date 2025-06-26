@@ -20,12 +20,16 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('Sending to backend:', { name, email, password });
+
     try {
       const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/register`, {
         name,
         email,
         password,
       });
+
+      console.log('Registration success:', res.data)
 
       const data = res.data;
       const token = res.data.token;
