@@ -4,18 +4,10 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const navigate = useNavigate();
-    const [error, setError] = useState();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-};
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,9 +44,9 @@ return (
             <form onSubmit={handleSubmit}>
                 <input
                 name="name"
-                value={formData.name}
+                value={name}
                 className='register-input'
-                onChange={handleChange}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Username"
                 required
                 />
@@ -62,9 +54,9 @@ return (
                 <input
                 name="email"
                 type="email"
-                value={formData.email}
+                value={email}
                 className='register-input'
-                onChange={handleChange}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 required
                 />
@@ -72,9 +64,9 @@ return (
                 <input
                 name="password"
                 type="password"
-                value={formData.password}
+                value={password}
                 className='register-input'
-                onChange={handleChange}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
                 />
