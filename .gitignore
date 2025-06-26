@@ -5,7 +5,9 @@
 client/dist
 
 # Ignore env variables
-**/.env
+.env
+client/.env
+server/.env
 
 # Ignore IDE config
 .vscode/
