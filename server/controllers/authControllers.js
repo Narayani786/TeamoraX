@@ -7,9 +7,9 @@ const JWT_SECRET = process.env.JWT_SECRET || '82aae8b77cf96d3c439b8c95d4f9cd7bc7
 
 export const registerUser = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!username || !email || !password) {
+    if (!name || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
       return res.status(409).json({ message: 'Email already exists' });
     }
 
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({ name, email, password });
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
       expiresIn: '1d',
@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
     res.status(201).json({
       user: {
         id: newUser._id,
-        name: newUser.username,
+        name: newUser.name,
         email: newUser.email,
       },
       token,
