@@ -7,7 +7,7 @@ const Register = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const navigate = useNavigate();
     const [error, setError] = useState();
-
+    const [name, setName] = useState();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +16,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Sending to backend:', {name, email, password });
 
     try {
       const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/register`, {
@@ -47,8 +48,8 @@ return (
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <input
-                name="username"
-                value={formData.username}
+                name="name"
+                value={formData.name}
                 className='register-input'
                 onChange={handleChange}
                 placeholder="Username"

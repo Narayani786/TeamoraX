@@ -7,6 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET || '82aae8b77cf96d3c439b8c95d4f9cd7bc7
 
 export const registerUser = async (req, res) => {
   try {
+    console.log('Backend received:', req.body)
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -21,7 +22,7 @@ export const registerUser = async (req, res) => {
     const newUser = await User.create({ name, email, password });
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
+      expiresIn: '7d',
     });
     res.status(201).json({
       user: {
