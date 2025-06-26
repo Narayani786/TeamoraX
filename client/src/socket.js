@@ -2,6 +2,6 @@
 
 import { io } from 'socket.io-client';
 
-    const socket = io(`${import.meta.env.VITE_API_URL}`, {transports: ['websockets']});
+    const socket = io('https://teamorax-backend.onrender.com', {transports: ['websockets']});
 
 export default socket;

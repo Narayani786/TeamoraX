@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -10,13 +10,16 @@ const Register = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log('Sending to backend:', { name, email, password });
 
     try {
-      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/register`, {
+      const res = await API.post( '/api/auth/register', {
         name,
         email,
         password,
@@ -30,6 +33,8 @@ const Register = () => {
       if (token) {
         localStorage.setItem('token', token);
         navigate('/dashboard');
+      } else {
+        console.log('No token received');
       }
     } catch (err) {
       console.error("Registration failed:", err.response?.data || err.message);

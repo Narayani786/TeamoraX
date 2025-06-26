@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api';
+
 
 const Dashboard = () => {
   const [joinedTeams, setJoinedTeams] = useState([]);
@@ -18,7 +19,7 @@ const Dashboard = () => {
         return;
       }
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/team/joined`, {
+        const res = await API.get('/api/team/joined', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -44,8 +45,8 @@ const Dashboard = () => {
  const handleCreateTeam = async () => {
   
   try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/team/create`,
+    const res = await API.post(
+      '/api/team/create',
       { name: teamName },
       { headers: { Authorization: `Bearer ${token}`
     },
@@ -67,8 +68,8 @@ const Dashboard = () => {
   const handleJoinTeam = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/team/join`,
+      const res = await API.post(
+        '/api/team/join',
         { code: joinCode },
         {
           headers: {
@@ -102,8 +103,8 @@ const handleLeaveTeam = async (teamToLeave) => {
   if (!confirmLeave) return;
 
   try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/team/leave`,
+    const res = await API.post(
+      '/api/team/leave',
       { teamId: teamToLeave._id },
       {
         headers: {

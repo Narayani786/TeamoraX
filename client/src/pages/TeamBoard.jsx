@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import API from "../api";
 import TaskColumn from "../components/TaskColumn";
 import { DragDropContext } from "@hello-pangea/dnd";
 import { useNavigate } from 'react-router-dom';
 // Socket.IO support
 import { io } from "socket.io-client";
 
-const socket = io(`${import.meta.env.VITE_API_URL}`);
+const socket = io('https://teamorax-backend.onrender.com');
 
 const TeamBoard = () => {
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ const TeamBoard = () => {
     const fetchTasks = async () => {
       try {
         if (!team || !team._id) return;
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/tasks/team/${team._id}`,
+        const res = await API.get(
+          `/api/tasks/team/${team._id}`,
           {
             headers: { Authorization: `Bearer ${token}`
           },
@@ -60,8 +60,8 @@ const TeamBoard = () => {
   const handleCreateTask = async () => {
   if (!newTask.trim()) return; // Ignore empty input
   try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/tasks/create`,
+    const res = await API.post(
+      `/api/tasks/create`,
       {
         title: newTask,
         teamId: team._id,
@@ -85,8 +85,8 @@ const TeamBoard = () => {
   // Handle task drag/drop status change
   const handleStatusChange = async ({taskId, newStatus}) => {
     try {
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/status`,
+      await API.put(
+        `/api/tasks/${taskId}/status`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}`
       }
@@ -117,8 +117,8 @@ const TeamBoard = () => {
   try {
     // Update task status on the server
     const token = localStorage.getItem('token');
-    const res = await axios.put(
-      `${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/status`,
+    const res = await API.put(
+      `/api/tasks/${taskId}/status`,
       { status: newStatus },
       { headers: { Authorization: `Bearer ${token}`
     }
@@ -145,7 +145,7 @@ const TeamBoard = () => {
 // Handle Deleting task
 const handleDeleteTask = async (taskId) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`,
+    await API.delete(`/api/tasks/${taskId}`,
       {
       headers: { Authorization: `Bearer ${token}`
     },
@@ -174,7 +174,7 @@ const handleLogout = () => {
  useEffect(() => {
   if (!team || !team._id) return;
 
-  const socket = io(`${import.meta.env.VITE_API_URL}`);
+  const socket = io("https://teamorax-backend.onrender.com");
 
   socket.on("taskCreated", (task) => {
     if (task.teamId === team._id) {
