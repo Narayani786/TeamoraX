@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
     res.status(201).json({
       user: {
         id: newUser._id,
-        name: newUser.name,
+        name: newUser.username,
         email: newUser.email,
       },
       token,
