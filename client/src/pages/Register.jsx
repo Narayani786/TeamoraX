@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-    const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const navigate = useNavigate();
     const [error, setError] = useState();
 
@@ -19,7 +19,7 @@ const Register = () => {
 
     try {
       const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/register`, {
-        username,
+        name,
         email,
         password,
       });
