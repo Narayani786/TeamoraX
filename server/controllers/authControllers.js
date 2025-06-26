@@ -10,33 +10,30 @@ export const registerUser = async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
-      return res.status(400).json({ error: 'All fields are required' });
+      return res.status(400).json({ message: 'All fields are required' });
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ error: 'Email already exists' });
+      return res.status(409).json({ message: 'Email already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
-    await user.save();
+    const newUser = await User.create({ username, email, password });
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
       expiresIn: '1d',
     });
     res.status(201).json({
       user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
+        id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
       },
       token,
     });
-    res.status(200).json({ message: 'Login successful', token, });
   } catch (err) {
     console.error('Register error:', err);
-    res.status(500).json({ error: 'Server error during registration' });
+    res.status(500).json({ message: 'Server error during registration', error: err.message });
   }
 };
 
