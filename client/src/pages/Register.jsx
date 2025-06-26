@@ -8,6 +8,9 @@ const Register = () => {
     const navigate = useNavigate();
     const [error, setError] = useState();
     const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,7 +19,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Sending to backend:', {name, email, password });
 
     try {
       const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/register`, {
@@ -30,10 +32,7 @@ const Register = () => {
 
       if (token) {
         localStorage.setItem('token', token);
-        console.log('token saved', token);
         navigate('/dashboard');
-      } else {
-        console.log('No token found')
       }
     } catch (err) {
       console.error("Registration failed:", err.response?.data || err.message);
