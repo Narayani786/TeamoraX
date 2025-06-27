@@ -6,7 +6,7 @@ TeamoraX is a simple full-stack web app to manage tasks within a team. Users can
 
 ## 🌐 Live website
 
-**Frontend**: [https://teamorax.vercel.app]
+**Frontend**: [https://teamora-x.vercel.app]
 
 **Bcakend**: [https://teamorax-backend.onrender.com]
 
