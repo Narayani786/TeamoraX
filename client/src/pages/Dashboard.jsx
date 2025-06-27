@@ -10,6 +10,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
+  console.log('Token:', token);
 
     const fetchJoinedTeams = async () => {
       const token = localStorage.getItem('token');
