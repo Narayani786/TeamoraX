@@ -80,7 +80,6 @@ const TeamBoard = () => {
     console.error('Task creation failed:', err);
   }
 };
-  
 
   // Handle task drag/drop status change
   const handleStatusChange = async ({taskId, newStatus}) => {

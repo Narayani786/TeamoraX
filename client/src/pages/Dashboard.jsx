@@ -13,7 +13,6 @@ const Dashboard = () => {
 
     const fetchJoinedTeams = async () => {
       const token = localStorage.getItem('token');
-
       if(!token) {
         console.error('No token is found in localStorage');
         return;
@@ -29,7 +28,8 @@ const Dashboard = () => {
         console.error('Failed to fetch joined teams:', err.response?.data || err.message );
       }
     };
-    
+
+
     useEffect(() => {
       fetchJoinedTeams();
     }, []);
@@ -43,7 +43,6 @@ const Dashboard = () => {
 
   // Handle Create Team
  const handleCreateTeam = async () => {
-  
   try {
     const res = await API.post(
       '/api/team/create',
@@ -51,11 +50,8 @@ const Dashboard = () => {
       { headers: { Authorization: `Bearer ${token}`
     },
   });
-  
   const createdTeam = res.data;
-
   localStorage.setItem('team', JSON.stringify(createdTeam));
-
   fetchJoinedTeams();
   navigate("/teamboard");
   } catch (err) {
@@ -76,7 +72,6 @@ const Dashboard = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-          
       if (res.data && res.data.team) {
         localStorage.setItem('team', JSON.stringify(res.data.team));
         alert(`Joined team: ${res.data}`);
@@ -98,10 +93,8 @@ const handleLeaveTeam = async (teamToLeave) => {
     alert("No team selected to leave.");
     return;
   }
-
   const confirmLeave = window.confirm(`Are you sure you want to leave ${teamToLeave.name}?`);
   if (!confirmLeave) return;
-
   try {
     const res = await API.post(
       '/api/team/leave',
@@ -132,7 +125,6 @@ const handleLogout = () => {
   localStorage.removeItem('team');
   navigate('/login');
 };
-
 
 
   return (
