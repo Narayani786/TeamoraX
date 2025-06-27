@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
 import API from '../api';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-    const navigate = useNavigate();
+
     const [error, setError] = useState();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-
-
+    const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log('Sending to backend:', { name, email, password });
-
     try {
       const res = await API.post( '/api/auth/register', {
         name,
         email,
         password,
       });
-
-      console.log('Registration success:', res.data)
-
-      const data = res.data;
       const token = res.data.token;
-
       if (token) {
         localStorage.setItem('token', token);
         navigate('/dashboard');
@@ -37,8 +28,9 @@ const Register = () => {
         console.log('No token received');
       }
     } catch (err) {
-      console.error("Registration failed:", err.response?.data || err.message);
-      alert("Registration failed");
+      const errorMsg = err.response?.data?.message || err.message || 'Registration failed';
+      console.error("Registration failed:", errorMsg);
+      setError(errorMsg);
     }
   };
 
