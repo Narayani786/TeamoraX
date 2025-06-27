@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
     });
     res.status(201).json({
       user: {
-        id: newUser._id,
+        userId: newUser._id,
         name: newUser.name,
         email: newUser.email,
       },
@@ -52,7 +52,9 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ id: existingUser._id }, JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d"
+    });
     res.status(200).json({ user: existingUser, token });
   } catch (err) {
     console.error("Login Error:", err.message);
